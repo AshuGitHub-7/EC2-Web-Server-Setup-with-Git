@@ -35,13 +35,13 @@ Here's a comprehensive guide for setting up a web server project on an EC2 insta
 
 1. *SSH into Instance*:
    - Use the following command on your local machine:
-     bash
+     ```
      ssh -i /path/to/your-key.pem ec2-user@your-ec2-public-ip
-     
+     ```
    - For Ubuntu:
-     bash
+     ```
      ssh -i /path/to/your-key.pem ubuntu@your-ec2-public-ip
-     
+     ```
 
 ### 3. *Install Git and Web Server*
 
