@@ -47,89 +47,89 @@ Here's a comprehensive guide for setting up a web server project on an EC2 insta
 
 1. *Update the Instance*:
    - Run the following commands to update the package lists:
-     bash
+     ```
      sudo yum update -y    # Amazon Linux
      sudo apt-get update -y # Ubuntu
-     
+     ```
 
 2. *Install Git*:
    - Install Git by running:
-     bash
+     ```
      sudo yum install git -y    # Amazon Linux
      sudo apt-get install git -y # Ubuntu
-     
+     ```
 
 3. *Install Apache or Nginx*:
    - For Apache:
-     bash
+     ```
      sudo yum install httpd -y    # Amazon Linux
      sudo apt-get install apache2 -y # Ubuntu
-     
+     ```
    - For Nginx:
-     bash
+     ```
      sudo yum install nginx -y    # Amazon Linux
      sudo apt-get install nginx -y # Ubuntu
-     
+     ```
 
 4. *Start the Web Server*:
    - Start the web server:
-     bash
+     ```
      sudo systemctl start httpd    # Apache
      sudo systemctl start apache2  # Apache on Ubuntu
      sudo systemctl start nginx    # Nginx
-     
+     ```
 
 5. *Enable Web Server on Boot*:
    - Ensure the web server starts on reboot:
-     bash
+     ```
      sudo systemctl enable httpd    # Apache
      sudo systemctl enable apache2  # Apache on Ubuntu
      sudo systemctl enable nginx    # Nginx
-     
+     ```
 
 ### 4. *Set Up a Git Repository for the Web Server*
 
 1. *Navigate to Web Directory*:
    - Apache:
-     bash
+     ```
      cd /var/www/html
-     
+     ```
    - Nginx:
-     bash
+     ```
      cd /usr/share/nginx/html
-     
+     ```
 
 2. *Initialize a Git Repository*:
    - Run:
-     bash
+     ```
      sudo git init
-     
+     ```
 
 3. *Configure Git User*:
    - Set up Git user information:
-     bash
+     ```
      git config --global user.name "Your Name"
      git config --global user.email "your.email@example.com"
-     
+     ```
 
 ### 5. *Add and Commit Web Content*
 
 1. *Create a Basic HTML File*:
    - Apache:
-     bash
+     ```
      echo "<h1>Hello, World!</h1>" | sudo tee index.html
-     
+     ```
    - Nginx:
-     bash
+     ```
      echo "<h1>Hello, World!</h1>" | sudo tee index.html
-     
+     ```
 
 2. *Stage and Commit the File*:
    - Run:
-     bash
+     ```
      sudo git add index.html
      sudo git commit -m "Initial commit with index.html"
-     
+     ```
 
 ### 6. *Set Up a Remote Git Repository (Optional)*
 
@@ -138,59 +138,59 @@ Here's a comprehensive guide for setting up a web server project on an EC2 insta
 
 2. *Link to Remote Repository*:
    - Connect your local repository to GitHub:
-     bash
+     ```
      sudo git remote add origin https://github.com/username/repository.git
      sudo git branch -M main
      sudo git push -u origin main
-     
+     ```
 
 ### 7. *Set Up a Post-Receive Hook for Automatic Deployment*
 
 1. *Create a Post-Receive Hook*:
    - Navigate to the Git hooks directory:
-     bash
+     ```
      cd /var/www/html/.git/hooks    # Apache
      cd /usr/share/nginx/html/.git/hooks # Nginx
-     
+     ```
 
 2. *Create the post-receive Hook*:
    - Create the hook script:
-     bash
+     ```
      sudo nano post-receive
-     
+     ```
    - Add the following content to the script:
-     bash
+     ```
      #!/bin/bash
      GIT_WORK_TREE=/var/www/html git checkout -f   # Apache
      GIT_WORK_TREE=/usr/share/nginx/html git checkout -f # Nginx
-     
+     ```
    - Save and exit.
 
 3. *Make the Hook Executable*:
    - Run:
-     bash
+     ```
      sudo chmod +x post-receive
-     
+     ```
 
 ### 8. *Push Changes from Your Local Machine*
 
 1. *Clone the Repository Locally*:
    - Clone the GitHub repository to your local machine:
-     bash
+     ```
      git clone https://github.com/username/repository.git
      cd repository
-     
+     ```
 
 2. *Make Changes to the Website*:
    - Modify index.html or other files locally.
 
 3. *Commit and Push Changes*:
    - Stage, commit, and push the changes:
-     bash
+     ```
      git add .
      git commit -m "Updated website content"
      git push origin main
-     
+     ```
 
 4. *Deploy Changes Automatically*:
    - The changes will be automatically deployed to your EC2 instance thanks to the post-receive hook.
@@ -204,17 +204,17 @@ Here's a comprehensive guide for setting up a web server project on an EC2 insta
 
 1. *Install Certbot*:
    - Install Certbot for Apache or Nginx:
-     bash
+     ```
      sudo yum install certbot python3-certbot-apache -y   # Apache
      sudo yum install certbot python3-certbot-nginx -y    # Nginx
-     
+     ```
 
 2. *Run Certbot*:
    - Obtain and install the SSL certificate:
-     bash
+     ```
      sudo certbot --apache    # Apache
      sudo certbot --nginx     # Nginx
-     
+     ```
 
 3. *Follow the Prompts*:
    - Certbot will guide you through securing your website with HTTPS.
