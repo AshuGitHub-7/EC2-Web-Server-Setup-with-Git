@@ -1,6 +1,6 @@
 ### ec2-webserver-git-setup
 
-"Comprehensive guide and code for setting up a web server on an AWS EC2 instance using Git. Includes steps for launching an instance, configuring a web server, setting up Git for automatic deployment, and securing the site with SSL/TLS."
+Comprehensive guide and code for setting up a web server on an AWS EC2 instance using Git. Includes steps for launching an instance, configuring a web server, setting up Git for automatic deployment, and securing the site with SSL/TLS.
 
 Here's a comprehensive guide for setting up a web server project on an EC2 instance using Git, with the necessary code and step-by-step instructions.
 
