@@ -219,3 +219,4 @@ Here's a comprehensive guide for setting up a web server project on an EC2 insta
    - Certbot will guide you through securing your website with HTTPS.
 
 This step-by-step guide should help you set up a web server project on an EC2 instance using Git, complete with automatic deployment and optional HTTPS setup.
+
